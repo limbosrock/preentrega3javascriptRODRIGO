@@ -92,23 +92,18 @@ function limpiarFormulario() {
 }
 
 function agregarLocalStorage (producto){
-    if ( localStorage.getItem('carrito')) {
-        prodEnCarrito = JSON.parse(localStorage.getItem('carrito'));
-        prodEnCarrito.push(producto)
-    } else {
-        prodEnCarrito.push(producto)
-
-    }
-    localStorage.setItem( 'carrito' , JSON.stringify(prodEnCarrito));
+    prodEnCarrito.push(producto)
+    localStorage.setItem('carrito', JSON.stringify(prodEnCarrito));
 }
 
+
+const prodEnCarrito = JSON.parse(localStorage.getItem('carrito')) || []
 
 
 function agregarCarrito (index) {
     console.log(menu[index])
     const producto = menu[index];
-    let prodEnCarrito = [];
-    agregarLocalStorage (producto)
+    agregarLocalStorage(producto)
 
     swal({
         title: 'Producto agragado',
